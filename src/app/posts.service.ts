@@ -41,4 +41,10 @@ export class PostsService {
       );
     // .subscribe((posts) => {});
   }
+
+  deletePosts() {
+    return this.http.delete(
+      'https://angular-http-175a0-default-rtdb.firebaseio.com/posts.json'
+    );
+  }
 }
