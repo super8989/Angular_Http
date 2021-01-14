@@ -48,7 +48,7 @@ export class PostsService {
       .get<{ [key: string]: Post }>(
         'https://angular-http-175a0-default-rtdb.firebaseio.com/posts.json',
         {
-          headers: new HttpHeaders({ 'Custon-Header': 'Helloooo' }),
+          headers: new HttpHeaders({ 'Custom-Header': 'Helloooo' }),
           // params: new HttpParams().set('print', 'pretty'),
           params: searchParams,
 
