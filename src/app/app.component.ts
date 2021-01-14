@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   title = 'http';
   loadedPosts: Post[] = [];
   isFetching = false;
+  error = null;
 
   constructor(private http: HttpClient, private postsService: PostsService) {}
 
@@ -21,10 +22,16 @@ export class AppComponent implements OnInit {
 
     this.isFetching = true;
 
-    this.postsService.fetchPosts().subscribe((posts) => {
-      this.loadedPosts = posts;
-      this.isFetching = false;
-    });
+    this.postsService.fetchPosts().subscribe(
+      (posts) => {
+        this.loadedPosts = posts;
+        this.isFetching = false;
+      },
+      (error) => {
+        // console.log(error);
+        this.error = error.error.error;
+      }
+    );
   }
 
   onCreatePost(postData: Post) {
@@ -50,10 +57,15 @@ export class AppComponent implements OnInit {
 
     this.isFetching = true;
 
-    this.postsService.fetchPosts().subscribe((posts) => {
-      this.loadedPosts = posts;
-      this.isFetching = false;
-    });
+    this.postsService.fetchPosts().subscribe(
+      (posts) => {
+        this.loadedPosts = posts;
+        this.isFetching = false;
+      },
+      (error) => {
+        this.error = error.message;
+      }
+    );
   }
 
   onClearPosts() {
