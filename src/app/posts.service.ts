@@ -51,6 +51,9 @@ export class PostsService {
           headers: new HttpHeaders({ 'Custon-Header': 'Helloooo' }),
           // params: new HttpParams().set('print', 'pretty'),
           params: searchParams,
+
+          // default will be json but can be changed to text so angular does not parse it automatically
+          responseType: 'json',
         }
       )
       .pipe(
@@ -77,6 +80,7 @@ export class PostsService {
         'https://angular-http-175a0-default-rtdb.firebaseio.com/posts.json',
         {
           observe: 'events',
+          responseType: 'text',
         }
       )
       .pipe(
