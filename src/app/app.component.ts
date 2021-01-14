@@ -37,6 +37,7 @@ export class AppComponent implements OnInit, OnDestroy {
       (error) => {
         // console.log(error);
         this.error = error.error.error;
+        this.isFetching = false;
       }
     );
   }
@@ -71,6 +72,7 @@ export class AppComponent implements OnInit, OnDestroy {
       },
       (error) => {
         this.error = error.message;
+        this.isFetching = false;
       }
     );
   }
@@ -109,6 +111,10 @@ export class AppComponent implements OnInit, OnDestroy {
   //       this.loadedPosts = posts;
   //     });
   // }
+
+  onHandleError() {
+    this.error = null;
+  }
 
   ngOnDestroy() {
     this.errorSub.unsubscribe();
