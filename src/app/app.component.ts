@@ -10,6 +10,7 @@ import { Post } from './post.model';
 })
 export class AppComponent implements OnInit {
   title = 'http';
+  loadedPosts: Post[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -59,7 +60,8 @@ export class AppComponent implements OnInit {
         })
       )
       .subscribe((posts) => {
-        console.log('posts', posts);
+        // console.log('posts', posts);
+        this.loadedPosts = posts;
       });
   }
 }
